@@ -49,6 +49,15 @@ namespace CallCenter {
         protected global::System.Web.UI.WebControls.TextBox nameTxt;
         
         /// <summary>
+        /// regexName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexName;
+        
+        /// <summary>
         /// emailTxt control.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,13 @@ namespace CallCenter {
         protected global::System.Web.UI.WebControls.DropDownList problemTypeDDL;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// resolvedDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList resolvedDDL;
         
         /// <summary>
         /// commentTxt control.
@@ -128,5 +137,14 @@ namespace CallCenter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submitBtn;
+        
+        /// <summary>
+        /// msgLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msgLbl;
     }
 }
