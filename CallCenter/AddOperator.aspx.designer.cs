@@ -10,60 +10,69 @@
 namespace CallCenter {
     
     
-    public partial class SiteMaster {
+    public partial class AddOperator {
         
         /// <summary>
-        /// sessHF control.
+        /// fnameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField sessHF;
+        protected global::System.Web.UI.WebControls.TextBox fnameTxt;
         
         /// <summary>
-        /// notLog control.
+        /// mnameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel notLog;
+        protected global::System.Web.UI.WebControls.TextBox mnameTxt;
         
         /// <summary>
-        /// opLog control.
+        /// lnameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel opLog;
+        protected global::System.Web.UI.WebControls.TextBox lnameTxt;
         
         /// <summary>
-        /// supLog control.
+        /// tempPW control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel supLog;
+        protected global::System.Web.UI.WebControls.TextBox tempPW;
         
         /// <summary>
-        /// MainContent control.
+        /// roleDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.DropDownList roleDDL;
         
         /// <summary>
-        /// logoutBtn control.
+        /// addBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logoutBtn;
+        protected global::System.Web.UI.WebControls.Button addBtn;
+        
+        /// <summary>
+        /// msgLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msgLbl;
     }
 }

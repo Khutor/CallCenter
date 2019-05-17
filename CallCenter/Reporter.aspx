@@ -70,7 +70,7 @@
                         <div class="col-lg-9">
                             <p class="break2"><br /></p>
                             <asp:TextBox ID="nameTxt" placeholder="John Doe" CssClass="custTxtBx name form-control" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="regexName" runat="server" ValidationExpression="^[A-Z][a-z]+\s[A-Z][a-z]+$" ControlToValidate="emailTXt" ErrorMessage="Invalid Name Format" Font-Bold="False" Font-Size="10px" ForeColor="#CC0000"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="regexName" runat="server" ValidationExpression="^[A-Z][a-z]+\s[A-Z][a-z]+$" ControlToValidate="nameTXt" ErrorMessage="Invalid Name Format" Font-Bold="False" Font-Size="10px" ForeColor="#CC0000"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,12 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/sidebar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .logout-hide {display: none;}
+    </style>
 
 </head>
 <body>
@@ -37,50 +43,152 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        <asp:HiddenField ID="sessHF" runat="server" />
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Call Center</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="About.aspx">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Contact.aspx">Contact</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown link
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+        <!-- Sidebar contents start -->
+        <div class="d-flex toggled" id="wrapper">
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading">My Actions</div>
+                <div class="list-group list-group-flush">
+                    <a href="Default.aspx" class="list-group-item list-group-item-action bg-light">Overview</a>
+                    <a href="Reporter.aspx" class="list-group-item list-group-item-action bg-light">Make a report</a>
+                    <a href="Account.aspx" class="list-group-item list-group-item-action bg-light">My Stats</a>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
-        </div>
+            </div>
+            <!-- Sidebar page contents start -->
+            <div id="page-content-wrapper">
+                <!-- Not logged in panel start -->
+                <asp:Panel ID="notLog" runat="server">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <a class="navbar-brand menu-toggle" href="#">
+                            <img src="https://cdn2.iconfinder.com/data/icons/leto-blue-ui-generic-2/64/ui-35-512.png" height="30" class="d-inline-block align-top" alt="">
+                        </a>
+                        <a class="navbar-brand menu-toggle nav-item" href="#">Call Center Portal</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Login.aspx">Login<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Contact.aspx">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </asp:Panel>
+                <!-- Not logged in panel end -->
+                <!-- Operator panel start -->
+                <asp:Panel ID="opLog" runat="server">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                        <a class="navbar-brand menu-toggle" href="#">
+                            <img src="https://cdn2.iconfinder.com/data/icons/leto-blue-ui-generic-2/64/ui-35-512.png" height="30" class="d-inline-block align-top" alt="">
+                        </a>
+                        <a class="navbar-brand menu-toggle nav-item" href="#">Call Center Portal</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown2" aria-controls="navbarNavDropdown2" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown2">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="About.aspx">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Contact.aspx">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:document.getElementById('<%= logoutBtn.ClientID %>').click();">Logout</a>
+                                </li>
 
+                            </ul>
+                        </div>
+                    </nav>
+                </asp:Panel>
+                <!-- Operator panel end -->
+                <!-- Supervisor Panel start -->
+                <asp:Panel ID="supLog" runat="server">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <a class="navbar-brand menu-toggle" href="#">
+                            <img src="https://cdn2.iconfinder.com/data/icons/leto-blue-ui-generic-2/64/ui-35-512.png" height="30" class="d-inline-block align-top" alt="">
+                        </a>
+                        <a class="navbar-brand menu-toggle nav-item" href="#">Call Center Portal</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown3" aria-controls="navbarNavDropdown3" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown3">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="About.aspx">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Contact.aspx">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:document.getElementById('<%= logoutBtn.ClientID %>').click();">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </asp:Panel>
+                <!-- Supervisor panel end -->
+
+                <!-- ASP main content start -->
+                <div class="container body-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <hr />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %></p>
+                    </footer>
+                </div>
+                <!-- ASP main content end -->
+            </div>
+            <!-- Sidebar page contents end -->
+        </div>
+        <!-- Sidebar contents end -->
+
+        <asp:Button ID="logoutBtn" CssClass="logout-hide" runat="server" Text="" OnClick="logoutBtn_Click" />
     </form>
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script defer="defer" type="text/javascript">
+        $(document).ready(function () {
+            var page = location.pathname.substring(1, location.pathname.length)
+            $('li.active').removeClass('active');
+            $('a[href="' + page + '.aspx"]').closest('li').addClass('active');
+
+            var hv = $("#" + '<%= sessHF.ClientID %>').val();
+
+            if (hv == "0") {
+                $(".list-group-flush").empty();
+            }
+
+            if (hv == "1") {
+                $("div.list-group-flush").append("<a href='AddOperator.aspx' class='list-group-item list-group-item-action bg-light'>Add Operators</a>")
+            }
+        });
+
+        $(".menu-toggle").click(function(e) {
+            e.preventDefault();
+            var hv = $("#" + '<%= sessHF.ClientID %>').val();
+            if (hv != "0") {
+                $("#wrapper").toggleClass("toggled");
+            }
+        });
+    </script>
 </body>
 </html>

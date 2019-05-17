@@ -18,14 +18,14 @@ namespace CallCenter
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //For some reason the checkbox resets itself on load, so re-check it
-            newCustChkBox.Checked = true;
-
-            //Only want to do these once
+            //Must be set to true on load for some reason
             if(!IsPostBack)
             {
-                fillDDLs();
+                newCustChkBox.Checked = true;
             }
+
+            //Fills the dropdowns from DB even after postback to get the updated customer dropdown if new customer added
+            fillDDLs();
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace CallCenter
                         using(MySqlCommand cmd = new MySqlCommand(proc, conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("opID", Session["operatorID"].ToString());
+                            cmd.Parameters.AddWithValue("opID", 2);
                             cmd.Parameters.AddWithValue("custID", custID);
                             cmd.Parameters.AddWithValue("suppID", supportTypeDDL.SelectedValue);
                             cmd.Parameters.AddWithValue("probID", problemTypeDDL.SelectedValue);
@@ -116,19 +116,22 @@ namespace CallCenter
                             cmd.ExecuteNonQuery();
                             conn.Dispose();
                             conn.Close();
+                            msgLbl.ForeColor = System.Drawing.Color.Black;
                             msgLbl.Text = "Report successfully created!";
                         }
                     }
                 }
                 catch(MySqlException ex)
                 {
-                    msgLbl.Text = ex.ToString();
+                    msgLbl.ForeColor = System.Drawing.Color.Red;
+                    msgLbl.Text = "An error occurred: " + ex.Code.ToString();
                 }
-                
+
             }
             else
             {
                 //Fields not valid; do not submit
+                msgLbl.ForeColor = System.Drawing.Color.Red;
                 msgLbl.Text = "Please fix the indicated fields";
             }
         }
@@ -186,10 +189,11 @@ namespace CallCenter
                         conn.Close();
                     }
                 }
+                fillDDLs();
             }
             catch(MySqlException ex)
             {
-                msgLbl.Text = ex.ToString();
+                msgLbl.Text = "An error occurred: " + ex.Code.ToString();
             }
 
             return custID;
