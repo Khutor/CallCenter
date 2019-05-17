@@ -22,7 +22,7 @@ namespace CallCenter
         {
             Session["isLogged"] = "False";
             Session["operatorRole"] = "0";
-            //Response.Redirect("Login.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -93,7 +93,7 @@ namespace CallCenter
                 }
                 else
                 {
-                    //Gets an existing customer's ID
+                    //Gets the existing customer's ID
                     custID = custSearchDDL.SelectedValue;
                 }
                 
@@ -105,7 +105,7 @@ namespace CallCenter
                         using(MySqlCommand cmd = new MySqlCommand(proc, conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("opID", 2);
+                            cmd.Parameters.AddWithValue("opID", Convert.ToInt32(Session["operatorID"].ToString()));
                             cmd.Parameters.AddWithValue("custID", custID);
                             cmd.Parameters.AddWithValue("suppID", supportTypeDDL.SelectedValue);
                             cmd.Parameters.AddWithValue("probID", problemTypeDDL.SelectedValue);

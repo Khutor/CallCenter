@@ -19,7 +19,17 @@ namespace CallCenter
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO: redirect if not a supervisor
+            if(!Session["operatorRole"].Equals("1"))
+            {
+                if(Session["isLogged"].Equals("False"))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                if(Session["isLogged"].Equals("True"))
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         protected void addBtn_Click(object sender, EventArgs e)
