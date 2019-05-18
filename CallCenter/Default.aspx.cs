@@ -53,7 +53,7 @@ namespace CallCenter
                                 //Adds a tooltip to show the full comment
                                 if (comment.Length > 40)
                                 {
-                                    newComment = "<a style='border-bottom: 1px dotted black;' data-toggle='tooltip' title='" + comment + "'>";
+                                    newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
                                     comment = comment.Substring(0, 39);
                                     if(comment.Substring(comment.Length -1, 1).Equals(" "))
                                     {
@@ -89,7 +89,7 @@ namespace CallCenter
                                 //Adds a tooltip to show the full comment
                                 if (comment.Length > 40)
                                 {
-                                    newComment = "<a style='border-bottom: 1px dotted black;' data-toggle='tooltip' title='" + comment + "'>";
+                                    newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
                                     comment = comment.Substring(0, 39);
                                     if (comment.Substring(comment.Length - 1, 1).Equals(" "))
                                     {
@@ -130,7 +130,7 @@ namespace CallCenter
                                     //Adds a tooltip to show the full comment
                                     if (comment.Length > 40)
                                     {                                       
-                                        newComment = "<a style='border-bottom: 1px dotted black;' data-toggle='tooltip' title='" + comment + "'>";
+                                        newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
                                         comment = comment.Substring(0, 39);
                                         if (comment.Substring(comment.Length - 1, 1).Equals(" "))
                                         {

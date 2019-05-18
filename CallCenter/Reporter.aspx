@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reporter.aspx.cs" Inherits="CallCenter.Reporter" %>
+﻿<%@ Page Title="Reporter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reporter.aspx.cs" Inherits="CallCenter.Reporter" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <style type="text/css">
@@ -178,8 +178,10 @@
         <div class="col"></div>
         <div class="col">
             <asp:Button ID="submitBtn" runat="server" CssClass="btn btn-primary" Text="Submit Report" OnClick="submitBtn_Click" />
-            <br />
-            <asp:Label ID="msgLbl" runat="server" Text=""></asp:Label>
+            <br /><br />
+            <div id="msg" role="alert">
+                <asp:Label ID="msgLbl" runat="server" Text=""></asp:Label>
+            </div>
         </div>
         <div class="col"></div>
     </div>
@@ -193,6 +195,18 @@
             $('#<%= phoneTxt.ClientID %>').mask('(000) 000-0000');
             $("p.break").html("");
             $("p.break2").html("");
+
+            
+            var msg = $('#<%= msgLbl.ClientID %>').text();
+            if (~msg.indexOf("Please fix") || ~msg.indexOf("An error")) {
+                //$('#msg').removeClass();
+                //$('#msg').addClass("alert alert-danger");
+            } else if (~msg.indexOf("Report successfully")) {
+                //$('#msg').removeClass();
+                //$('#msg').addClass("alert alert-success");
+            }
+            
+
         });
 
         //Fills the name, phone, email textboxes with contents of dropdown

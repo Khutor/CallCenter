@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddOperator.aspx.cs" Inherits="CallCenter.AddOperator" %>
+﻿<%@ Page Title="Operator Add" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddOperator.aspx.cs" Inherits="CallCenter.AddOperator" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <style type="text/css">
@@ -53,6 +53,7 @@
         <div>
             <asp:button ID="addBtn" type="submit" class="btn btn-primary btn-block" Text="Add Operator" runat="server" OnClick="addBtn_Click"/> 
         </div>
+        <br />
         <div class="clearfix center">
             <asp:Label ID="msgLbl" runat="server" ForeColor="Red" Text=""></asp:Label>
         </div>  

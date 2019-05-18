@@ -61,6 +61,7 @@ namespace CallCenter
                         conn.Close();
 
                         msgLbl.ForeColor = System.Drawing.Color.Black;
+                        msgLbl.CssClass = "alert alert-success";
                         msgLbl.Text = "Operator successfully added";
                     }
                 }
@@ -68,6 +69,7 @@ namespace CallCenter
             catch(MySqlException ex)
             {
                 msgLbl.ForeColor = System.Drawing.Color.Red;
+                msgLbl.CssClass = "alert alert-danger";
                 msgLbl.Text = "An error occurred: " + ex.Code.ToString();
             }
 

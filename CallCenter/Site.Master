@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Portal</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -95,9 +95,6 @@
                                     <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="About.aspx">About</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="Contact.aspx">Contact</a>
                                 </li>
                                 <li class="nav-item">
@@ -125,9 +122,6 @@
                                     <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="About.aspx">About</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="Contact.aspx">Contact</a>
                                 </li>
                                 <li class="nav-item">
@@ -139,7 +133,7 @@
                 </asp:Panel>
                 <%-- Supervisor panel end --%>
 
-                <%-- ASP main content start --%>
+                <%-- Body content start --%>
                 <div class="container body-content">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
@@ -148,7 +142,7 @@
                         <p>&copy; <%: DateTime.Now.Year %></p>
                     </footer>
                 </div>
-                <%-- ASP main content end --%>
+                <%-- Body content end --%>
             </div>
             <%-- Sidebar page contents end --%>
         </div>

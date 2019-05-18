@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CallCenter.Login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CallCenter.Login" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <style type="text/css">
@@ -41,7 +41,7 @@
         <div class="form-group">
             <asp:button ID="loginBtn" type="submit" class="btn btn-primary btn-block" Text="Login" runat="server" OnClick="loginBtn_Click"/> 
         </div>
-        <div class="clearfix center">
+        <div id="msg" class="clearfix center">
             <asp:Label ID="msgLbl" runat="server" ForeColor="Red" Text=""></asp:Label>
         </div>  
     </div>

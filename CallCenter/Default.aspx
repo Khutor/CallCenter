@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CallCenter._Default" %>
+﻿<%@ Page Title="Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CallCenter._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style type="text/css">
-        .tooltip-inner {max-width: 50%;}
+        .tooltip-inner {max-width: 25% !important;}
     </style>
 
     <asp:HiddenField ID="reportHistoryHF" runat="server" />
@@ -90,33 +90,35 @@
     </div>
 
     <asp:Label ID="msgLbl" runat="server" Text=" "></asp:Label>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer type="text/javascript">
         $(document).ready(function () {
             /****Creates tables using the JQuery DataTables library****/
 
             //Operator's resolved reports table
-            var t = $('#reportsTable').DataTable({ "pageLength": 5, "lengthChange": false, language: { search: "" } });
+            var t = $('#reportsTable').DataTable({ "pageLength": 5, "lengthChange": false, "drawCallback": function (settings) { $('[data-toggle="tooltip"]').tooltip(); }, language: { search: "" } });
             $('#reportsTable_filter input').addClass('form-control');
             $('#reportsTable_filter input').attr("placeholder", "Search here...");
 
             var json = $("#" + '<%= reportHistoryHF.ClientID %>').val();
             json = JSON.parse(decodeURIComponent(json));
 
+            //Get each item in json
             $.each(json, function (key, item) {
                 t.row.add([item.reportID, item.reportContents[0], item.reportContents[1], item.reportContents[2], item.reportContents[3],
                 item.reportContents[4], item.reportContents[5], item.reportContents[6], item.reportContents[7]]).draw();
             });
 
             //Unresolved reports table
-            t = $('#unresolvedTable').DataTable({ "pageLength": 5, "lengthChange": false, language: { search: "" } });
+            t = $('#unresolvedTable').DataTable({ "pageLength": 5, "lengthChange": false, "drawCallback": function (settings) { $('[data-toggle="tooltip"]').tooltip(); }, language: { search: "" } });
             $('#unresolvedTable_filter input').addClass('form-control');
             $('#unresolvedTable_filter input').attr("placeholder", "Search here...");
 
             json = $("#" + '<%= unresolvedReportsHF.ClientID %>').val();
             json = JSON.parse(decodeURIComponent(json));
 
+            //Get each item in json
             $.each(json, function (key, item) {
                 t.row.add([item.reportID, item.reportContents[0], item.reportContents[1], item.reportContents[2], item.reportContents[3],
                 item.reportContents[4], item.reportContents[5], item.reportContents[6], item.reportContents[7]]).draw();
@@ -124,13 +126,14 @@
 
             //All reports table (supervisors only)
             if ($("#" + '<%= supReportsHF.ClientID %>').val() != "none") {
-                t = $('#superTable').DataTable({ "pageLength": 5, "lengthChange": false, language: { search: "" } });
+                t = $('#superTable').DataTable({ "pageLength": 5, "lengthChange": false, "drawCallback": function (settings) { $('[data-toggle="tooltip"]').tooltip(); }, language: { search: "" } });
                 $('#superTable_filter input').addClass('form-control');
                 $('#superTable_filter input').attr("placeholder", "Search here...");
 
                 json = $("#" + '<%= supReportsHF.ClientID %>').val();
                 json = JSON.parse(decodeURIComponent(json));
 
+                //Get each item in json
                 $.each(json, function (key, item) {
                     t.row.add([item.reportID, item.reportContents[0], item.reportContents[1], item.reportContents[2], item.reportContents[3],
                     item.reportContents[4], item.reportContents[5], item.reportContents[6], item.reportContents[7], item.reportContents[8]]).draw();
@@ -143,6 +146,9 @@
                 //Removes the css tag that makes all reports button invisible for page load
                 $('#allBtn').css('visibility', 'visible');
             }
+
+            //$('[data-toggle="tooltip"]').tooltip();
+
 
             //Removes the css tag that makes unresolved table invisible for page load
             $('#unresolved').hide();

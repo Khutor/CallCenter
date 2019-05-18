@@ -61,12 +61,14 @@ namespace CallCenter
                                     }
                                     else
                                     {
+                                        msgLbl.CssClass = "alert alert-danger";
                                         msgLbl.Text = "Invalid username/password";
                                     }
                                 }
                             }
                             else
                             {
+                                msgLbl.CssClass = "alert alert-danger";
                                 msgLbl.Text = "Invalid username/password";
                             }
                         }
@@ -75,6 +77,7 @@ namespace CallCenter
             }
             catch(MySqlException ex)
             {
+                msgLbl.CssClass = "alert alert-danger";
                 msgLbl.Text = "An error occurred: " + ex.Code.ToString();
             }
 

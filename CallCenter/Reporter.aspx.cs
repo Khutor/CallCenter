@@ -46,6 +46,7 @@ namespace CallCenter
                     //Execute the procedure
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
+                        if (IsPostBack) custSearchDDL.Items.Clear();
                         //While reading the customer, add them to the dropdown
                         while(reader.Read())
                         {
@@ -53,22 +54,24 @@ namespace CallCenter
                             custSearchDDL.Items.Add(new ListItem(customer, reader[0].ToString()));
                         }
 
-                        //Get next result (support type)
-                        reader.NextResult();
+                        if(!IsPostBack) { 
+                            //Get next result (support type)
+                            reader.NextResult();
 
-                        //Get each support type and add to dropdown
-                        while(reader.Read())
-                        {
-                            supportTypeDDL.Items.Add(new ListItem(reader[1].ToString(), reader[0].ToString()));
-                        }
+                            //Get each support type and add to dropdown
+                            while(reader.Read())
+                            {
+                                supportTypeDDL.Items.Add(new ListItem(reader[1].ToString(), reader[0].ToString()));
+                            }
 
-                        //Get next result (problem type)
-                        reader.NextResult();
+                            //Get next result (problem type)
+                            reader.NextResult();
 
-                        //Get each problem type and add to dropdown
-                        while(reader.Read())
-                        {
-                            problemTypeDDL.Items.Add(new ListItem(reader[1].ToString(), reader[0].ToString()));
+                            //Get each problem type and add to dropdown
+                            while(reader.Read())
+                            {
+                                problemTypeDDL.Items.Add(new ListItem(reader[1].ToString(), reader[0].ToString()));
+                            }
                         }
 
                     }
@@ -116,14 +119,16 @@ namespace CallCenter
                             cmd.ExecuteNonQuery();
                             conn.Dispose();
                             conn.Close();
-                            msgLbl.ForeColor = System.Drawing.Color.Black;
+                            //msgLbl.ForeColor = System.Drawing.Color.Black;
+                            msgLbl.CssClass = "alert alert-success";
                             msgLbl.Text = "Report successfully created!";
                         }
                     }
                 }
                 catch(MySqlException ex)
                 {
-                    msgLbl.ForeColor = System.Drawing.Color.Red;
+                   // msgLbl.ForeColor = System.Drawing.Color.Red;
+                    msgLbl.CssClass = "alert alert-danger";
                     msgLbl.Text = "An error occurred: " + ex.Code.ToString();
                 }
 
@@ -131,7 +136,8 @@ namespace CallCenter
             else
             {
                 //Fields not valid; do not submit
-                msgLbl.ForeColor = System.Drawing.Color.Red;
+                msgLbl.CssClass = "alert alert-danger";
+                //msgLbl.ForeColor = System.Drawing.Color.Red;
                 msgLbl.Text = "Please fix the indicated fields";
             }
         }
@@ -193,6 +199,7 @@ namespace CallCenter
             }
             catch(MySqlException ex)
             {
+                msgLbl.CssClass = "alert alert-danger";
                 msgLbl.Text = "An error occurred: " + ex.Code.ToString();
             }
 
