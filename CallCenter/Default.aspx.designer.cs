@@ -22,6 +22,42 @@ namespace CallCenter {
         protected global::System.Web.UI.WebControls.HiddenField reportHistoryHF;
         
         /// <summary>
+        /// unresolvedReportsHF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField unresolvedReportsHF;
+        
+        /// <summary>
+        /// supReportsHF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField supReportsHF;
+        
+        /// <summary>
+        /// nameLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameLbl;
+        
+        /// <summary>
+        /// superLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label superLbl;
+        
+        /// <summary>
         /// msgLbl control.
         /// </summary>
         /// <remarks>
