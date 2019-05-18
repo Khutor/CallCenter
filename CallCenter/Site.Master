@@ -39,12 +39,11 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
         <asp:HiddenField ID="sessHF" runat="server" />
 
-        <%-- Sidebar contents start --%>
+        <!-- Sidebar contents start -->
         <div class="d-flex toggled" id="wrapper">
             <div class="bg-light border-right" style="top: 0; position:sticky;" id="sidebar-wrapper">
                 <div class="sidebar-heading">My Actions</div>
@@ -54,9 +53,9 @@
                     <a href="Account.aspx" class="list-group-item list-group-item-action bg-light">My Stats</a>
                 </div>
             </div>
-            <%-- Sidebar page contents start --%>
+            <!-- Sidebar page contents start -->
             <div id="page-content-wrapper">
-                <%-- Not logged in panel start --%>
+                <!-- Not logged in panel start -->
                 <asp:Panel ID="notLog" runat="server">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <a class="navbar-brand menu-toggle" href="#">
@@ -78,8 +77,8 @@
                         </div>
                     </nav>
                 </asp:Panel>
-                <%-- Not logged in panel end --%>
-                <%-- Operator panel start --%>
+                <!-- Not logged in panel end -->
+                <!-- Operator panel start -->
                 <asp:Panel ID="opLog" runat="server">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="top: 0; position:sticky;">
                         <a class="navbar-brand menu-toggle" href="#">
@@ -105,8 +104,8 @@
                         </div>
                     </nav>
                 </asp:Panel>
-                <%-- Operator panel end --%>
-                <%-- Supervisor Panel start --%>
+                <!-- Operator panel end -->
+                <!-- Supervisor Panel start -->
                 <asp:Panel ID="supLog" runat="server">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="top: 0; position:sticky;">
                         <a class="navbar-brand menu-toggle" href="#">
@@ -131,9 +130,9 @@
                         </div>
                     </nav>
                 </asp:Panel>
-                <%-- Supervisor panel end --%>
+                <!-- Supervisor panel end -->
 
-                <%-- Body content start --%>
+                <!-- Body content start -->
                 <div class="container body-content">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
@@ -142,16 +141,16 @@
                         <p>&copy; <%: DateTime.Now.Year %></p>
                     </footer>
                 </div>
-                <%-- Body content end --%>
+                <!-- Body content end -->
             </div>
-            <%-- Sidebar page contents end --%>
+            <!-- Sidebar page contents end -->
         </div>
-        <%-- Sidebar contents end --%>
+        <!-- Sidebar contents end -->
 
         <asp:Button ID="logoutBtn" CssClass="logout-hide" runat="server" Text="" OnClick="logoutBtn_Click" />
     </form>
 
-    <%-- Scripts --%>
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

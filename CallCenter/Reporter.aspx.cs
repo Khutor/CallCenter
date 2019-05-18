@@ -84,6 +84,11 @@ namespace CallCenter
             }
         }
 
+        /// <summary>
+        /// submitBtn_click(object, EventArgs) handles submitting reports
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void submitBtn_Click(object sender, EventArgs e)
         {
             if(Page.IsValid)

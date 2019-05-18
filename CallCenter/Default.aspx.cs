@@ -21,6 +21,7 @@ namespace CallCenter
         {
             if(Session["operatorID"] != null)
             {
+                //Adds the operator's name to the jumbotron and gets the reports
                 nameLbl.Text = Session["operatorName"].ToString();
                 getOperatorReports();
             }
@@ -30,6 +31,9 @@ namespace CallCenter
             }
         }
 
+        /// <summary>
+        /// getOperatorReports() gets reports not only associated w/ the logged in operator, but others depending on role (could probably be shortend)
+        /// </summary>
         protected void getOperatorReports()
         {
             try
@@ -54,6 +58,7 @@ namespace CallCenter
                                 if (comment.Length > 40)
                                 {
                                     newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
+                                    //Trims the comment a little bit
                                     comment = comment.Substring(0, 39);
                                     if(comment.Substring(comment.Length -1, 1).Equals(" "))
                                     {
@@ -90,6 +95,7 @@ namespace CallCenter
                                 if (comment.Length > 40)
                                 {
                                     newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
+                                    //Trims the comment a little bit
                                     comment = comment.Substring(0, 39);
                                     if (comment.Substring(comment.Length - 1, 1).Equals(" "))
                                     {
@@ -102,6 +108,7 @@ namespace CallCenter
                                 {
                                     newComment = comment;
                                 }
+
                                 //Creates a link containing the report's ID
                                 string resolved = "<a href='Reporter.aspx?report=" + reader[0].ToString() + "'>" + reader[6].ToString() + "</a>";
 
@@ -131,6 +138,7 @@ namespace CallCenter
                                     if (comment.Length > 40)
                                     {                                       
                                         newComment = "<a style='border-bottom: 1px dotted black;' data-placement='top' data-container='body' data-toggle='tooltip' title='" + comment + "'>";
+                                        //Trims the comment a little bit
                                         comment = comment.Substring(0, 39);
                                         if (comment.Substring(comment.Length - 1, 1).Equals(" "))
                                         {
@@ -144,7 +152,7 @@ namespace CallCenter
                                         newComment = comment;
                                     }
 
-                                    
+                                    //Creates a link containing the report's ID if not resolved
                                     string resolved = reader[8].ToString();
                                     if(resolved.Equals("Not Resolved"))
                                     {

@@ -21,7 +21,6 @@ namespace CallCenter
         protected void Session_Start(Object sender, EventArgs e)
         {
             Session["isLogged"] = "False";
-            Session["operatorRole"] = "0";
             Response.Redirect("Login.aspx");
         }
     }

@@ -19,6 +19,7 @@ namespace CallCenter
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Redirects if not a supervisor
             if(!Session["operatorRole"].Equals("1"))
             {
                 if(Session["isLogged"].Equals("False"))
@@ -32,11 +33,17 @@ namespace CallCenter
             }
         }
 
+        /// <summary>
+        /// addBtn_Click(object, EventArgs) handles the adding of operators
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void addBtn_Click(object sender, EventArgs e)
         {
             string hash, salt;
             string pw = tempPW.Text;
             string uName = fnameTxt.Text.ToLower() + "." + mnameTxt.Text.ToLower()[0] + "." + lnameTxt.Text.ToLower();
+            //Creates and returns the salt and hash to the two variables via 'out'
             generateSaltHash(pw, out salt, out hash);
 
             try
@@ -60,7 +67,7 @@ namespace CallCenter
                         conn.Dispose();
                         conn.Close();
 
-                        msgLbl.ForeColor = System.Drawing.Color.Black;
+                        //msgLbl.ForeColor = System.Drawing.Color.Black;
                         msgLbl.CssClass = "alert alert-success";
                         msgLbl.Text = "Operator successfully added";
                     }
@@ -68,7 +75,7 @@ namespace CallCenter
             }
             catch(MySqlException ex)
             {
-                msgLbl.ForeColor = System.Drawing.Color.Red;
+                //msgLbl.ForeColor = System.Drawing.Color.Red;
                 msgLbl.CssClass = "alert alert-danger";
                 msgLbl.Text = "An error occurred: " + ex.Code.ToString();
             }

@@ -23,6 +23,11 @@ namespace CallCenter
 
         }
 
+        /// <summary>
+        /// loginBtn_Click(object, EventArgs) handles the logging in of a user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void loginBtn_Click(object sender, EventArgs e)
         {
             var uname = unameTxt.Text;
@@ -52,11 +57,11 @@ namespace CallCenter
                                     bool verified = verifyPassword(pw, row["operatorSalt"].ToString(), row["operatorPassword"].ToString());
                                     if (verified)
                                     {
+                                        //Sets session vars and redirects to overview page
                                         Session["operatorID"] = row["operatorID"].ToString();
                                         Session["operatorName"] = row["operatorFName"].ToString() + " " + row["operatorLName"].ToString();
                                         Session["operatorRole"] = row["roleID"].ToString();
                                         Session["isLogged"] = "True";
-                                        System.Diagnostics.Debug.WriteLine("Login: " + Session["isLogged"]);
                                         Response.Redirect("Default.aspx");
                                     }
                                     else
@@ -84,7 +89,8 @@ namespace CallCenter
         }
 
         /// <summary>
-        /// verifyPassword(string, string, string) returns a true/false to see if the password matches
+        /// verifyPassword(string, string, string) returns a true/false to see if the password matches via
+        /// hashing and salting through rfc2898DeriveBytes method
         /// </summary>
         /// <param name="pw">User entered password</param>
         /// <param name="salt">Password salt</param>
