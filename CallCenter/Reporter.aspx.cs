@@ -19,20 +19,28 @@ namespace CallCenter
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Must be set to true on load for some reason
-            if(!IsPostBack)
+            if (Session["operatorID"] != null)
             {
-                fillDDLs();
 
-                newCustChkBox.Checked = true;
-                newReportChkBox.Checked = false;
+                //Must be set to true on load for some reason
+                if (!IsPostBack)
+                {
+                    fillDDLs();
 
-                //Check if reportID is in link
-                if (Request.QueryString["report"] != null)
-                {                    
-                    //Populate fields if report actually is unresolved
-                    populateReportFields(Request.QueryString["report"].ToString());
+                    newCustChkBox.Checked = true;
+                    newReportChkBox.Checked = false;
+
+                    //Check if reportID is in link
+                    if (Request.QueryString["report"] != null)
+                    {
+                        //Populate fields if report actually is unresolved
+                        populateReportFields(Request.QueryString["report"].ToString());
+                    }
                 }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
 
         }

@@ -45,6 +45,10 @@ namespace CallCenter
             {
                 sessHF.Value = Session["operatorRole"].ToString();
             }
+            else
+            {
+                sessHF.Value = "0";
+            }
         }
 
         /// <summary>
