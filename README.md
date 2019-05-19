@@ -1,7 +1,8 @@
 # CallCenter
-
-## Summary
 This is a simple application that demonstrates the ability for Call Center opertators to create and view reports of customer service they or other operators have provided to new or existing customers.
+
+## Pages
+Below is a list of pages within the application with a description of what they do.
 
 ### Site.Master
 This is the master page. It houses the sidebar, navbar, page contents, and importing of JavaScript and other libraries.
