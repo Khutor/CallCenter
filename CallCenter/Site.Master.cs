@@ -14,7 +14,6 @@ namespace CallCenter
             //Displays the non-logged navbar
             if (Session["isLogged"].Equals("False"))
             {
-                System.Diagnostics.Debug.WriteLine("SiteMaster: " + Session["isLogged"]);
                 notLog.Visible = true;
                 opLog.Visible = false;
                 supLog.Visible = false;

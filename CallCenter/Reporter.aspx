@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <asp:CheckBox ID="newReportChkBox" CssClass="form-check-input" Checked="true" runat="server" />
+                            <asp:CheckBox ID="newReportChkBox" Enabled="false" CssClass="form-check-input" Checked="true" runat="server" />
                         </div>
                     </div>
                 </div>

@@ -50,7 +50,7 @@
                 <div class="list-group list-group-flush">
                     <a href="Default.aspx" class="list-group-item list-group-item-action bg-light">Overview</a>
                     <a href="Reporter.aspx" class="list-group-item list-group-item-action bg-light">Make a report</a>
-                    <a href="Account.aspx" class="list-group-item list-group-item-action bg-light">My Stats</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">My Stats</a>
                 </div>
             </div>
             <!-- Sidebar page contents start -->

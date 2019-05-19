@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style type="text/css">
-        .tooltip-inner {max-width: 25% !important;}
+        .tooltip-inner {max-width: 50% !important;}
     </style>
 
     <asp:HiddenField ID="reportHistoryHF" runat="server" />
@@ -49,6 +49,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Report ID</th>
+                        <th>Created By</th>
                         <th>Create Date</th>
                         <th>Last Update</th>
                         <th>Support Type</th>
@@ -72,10 +73,10 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Report ID</th>
-                        <th>Create Date</th>
-                        <th>Last Update</th>
                         <th>Created By</th>
                         <th>Resolved By</th>
+                        <th>Create Date</th>
+                        <th>Last Update</th>
                         <th>Support Type</th>
                         <th>Problem Type</th>
                         <th>Customer</th>

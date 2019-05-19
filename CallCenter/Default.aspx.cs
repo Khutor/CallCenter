@@ -89,7 +89,7 @@ namespace CallCenter
                             //All unresolved reports
                             while (reader.Read())
                             {
-                                string comment = reader[7].ToString();
+                                string comment = reader[8].ToString();
                                 string newComment = "";
                                 //Adds a tooltip to show the full comment
                                 if (comment.Length > 40)
@@ -110,14 +110,14 @@ namespace CallCenter
                                 }
 
                                 //Creates a link containing the report's ID
-                                string resolved = "<a href='Reporter.aspx?report=" + reader[0].ToString() + "'>" + reader[6].ToString() + "</a>";
+                                string resolved = "<a href='Reporter.aspx?report=" + reader[0].ToString() + "'>" + reader[7].ToString() + "</a>";
 
                                 //Adds the reports
                                 reports.Add(new report
                                 {
                                     reportID = reader[0].ToString(),
                                     reportContents = new List<string> { reader[1].ToString(), reader[2].ToString(), reader[3].ToString(),
-                                    reader[4].ToString(), reader[5].ToString(), resolved, newComment }
+                                    reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), resolved, newComment }
                                 });
                             }
                             //Convert reports to JSON
