@@ -5,7 +5,7 @@ This is a simple application that demonstrates the ability for Call Center opert
 Below is a list of pages within the application with a description of what they do.
 
 #### Site.Master
-This is the master page. It houses the sidebar, navbar, page contents, and importing of JavaScript and other libraries.
+This is the master page. It houses the sidebar, navbar, page contents, and importing of JavaScript and other libraries. The sidebar can be opened by clicking the left side of the navbar ONlY after logging in.
 
 #### Login.aspx
 This page is used login to the application. Logging in is done by using a C# salt and hash algorithm to match the password to the password stored in the database.
